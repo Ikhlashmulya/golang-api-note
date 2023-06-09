@@ -185,19 +185,9 @@ func TestDeleteSuccess(t *testing.T) {
 	assert.Equal(t, 200, webResponse.Code)
 	assert.Equal(t, "OK", webResponse.Status)
 	assert.Equal(t, "success deleted note", webResponse.Message)
-
-	noteRepository.Delete(entity.Note{Id: id})
 }
 
 func TestDeleteNotFound(t *testing.T) {
-	id := uuid.New().String()
-	noteRepository.Create(entity.Note{
-		Id:    id,
-		Title: "Test Create Data",
-		Tags:  "tags1,tags2",
-		Body:  "ini adalah test",
-	})
-
 	request := httptest.NewRequest("DELETE", "/api/notes/"+"1234", nil)
 	request.Header.Set("x-api-key", "secret")
 
@@ -210,8 +200,6 @@ func TestDeleteNotFound(t *testing.T) {
 
 	assert.Equal(t, 404, webResponse.Code)
 	assert.Equal(t, "NOT_FOUND", webResponse.Status)
-
-	noteRepository.Delete(entity.Note{Id: id})
 }
 
 func TestFindById(t *testing.T) {
