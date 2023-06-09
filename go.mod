@@ -1,4 +1,4 @@
-module github.com/ikhlashmulya/noteapp-resful-api
+module github.com/ikhlashmulya/golang-api-note
 
 go 1.20
 

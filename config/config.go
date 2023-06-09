@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/ikhlashmulya/noteapp-resful-api/exception"
+	"github.com/ikhlashmulya/golang-api-note/exception"
 	"github.com/joho/godotenv"
 )
 

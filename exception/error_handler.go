@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"github.com/ikhlashmulya/noteapp-resful-api/model"
+	"github.com/ikhlashmulya/golang-api-note/model"
 	"gorm.io/gorm"
 )
 

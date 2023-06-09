@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/ikhlashmulya/noteapp-resful-api/entity"
+	"github.com/ikhlashmulya/golang-api-note/entity"
 )
 
 // contract note repository

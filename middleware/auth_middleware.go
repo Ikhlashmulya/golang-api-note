@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/ikhlashmulya/noteapp-resful-api/model"
+	"github.com/ikhlashmulya/golang-api-note/model"
 )
 
 func AuthMiddleware() fiber.Handler {

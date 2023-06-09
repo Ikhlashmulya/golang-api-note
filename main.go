@@ -3,11 +3,11 @@ package main
 import (
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"github.com/ikhlashmulya/noteapp-resful-api/config"
-	"github.com/ikhlashmulya/noteapp-resful-api/controller"
-	"github.com/ikhlashmulya/noteapp-resful-api/middleware"
-	"github.com/ikhlashmulya/noteapp-resful-api/repository"
-	"github.com/ikhlashmulya/noteapp-resful-api/service"
+	"github.com/ikhlashmulya/golang-api-note/config"
+	"github.com/ikhlashmulya/golang-api-note/controller"
+	"github.com/ikhlashmulya/golang-api-note/middleware"
+	"github.com/ikhlashmulya/golang-api-note/repository"
+	"github.com/ikhlashmulya/golang-api-note/service"
 
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )

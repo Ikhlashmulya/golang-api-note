@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ikhlashmulya/noteapp-resful-api/entity"
-	"github.com/ikhlashmulya/noteapp-resful-api/exception"
+	"github.com/ikhlashmulya/golang-api-note/entity"
+	"github.com/ikhlashmulya/golang-api-note/exception"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

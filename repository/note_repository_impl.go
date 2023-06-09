@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"github.com/ikhlashmulya/noteapp-resful-api/config"
-	"github.com/ikhlashmulya/noteapp-resful-api/entity"
-	"github.com/ikhlashmulya/noteapp-resful-api/exception"
+	"github.com/ikhlashmulya/golang-api-note/config"
+	"github.com/ikhlashmulya/golang-api-note/entity"
+	"github.com/ikhlashmulya/golang-api-note/exception"
 	"gorm.io/gorm"
 )
 

@@ -1,6 +1,6 @@
 package service
 
-import "github.com/ikhlashmulya/noteapp-resful-api/model"
+import "github.com/ikhlashmulya/golang-api-note/model"
 
 // contract note service
 type NoteService interface {

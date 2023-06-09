@@ -6,10 +6,10 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/google/uuid"
-	"github.com/ikhlashmulya/noteapp-resful-api/entity"
-	"github.com/ikhlashmulya/noteapp-resful-api/exception"
-	"github.com/ikhlashmulya/noteapp-resful-api/model"
-	"github.com/ikhlashmulya/noteapp-resful-api/repository"
+	"github.com/ikhlashmulya/golang-api-note/entity"
+	"github.com/ikhlashmulya/golang-api-note/exception"
+	"github.com/ikhlashmulya/golang-api-note/model"
+	"github.com/ikhlashmulya/golang-api-note/repository"
 )
 
 // note service implementation

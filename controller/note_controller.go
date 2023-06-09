@@ -2,9 +2,9 @@ package controller
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/ikhlashmulya/noteapp-resful-api/exception"
-	"github.com/ikhlashmulya/noteapp-resful-api/model"
-	"github.com/ikhlashmulya/noteapp-resful-api/service"
+	"github.com/ikhlashmulya/golang-api-note/exception"
+	"github.com/ikhlashmulya/golang-api-note/model"
+	"github.com/ikhlashmulya/golang-api-note/service"
 )
 
 // note controller

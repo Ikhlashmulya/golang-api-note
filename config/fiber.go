@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/ikhlashmulya/noteapp-resful-api/exception"
+	"github.com/ikhlashmulya/golang-api-note/exception"
 )
 
 //fiber configuration

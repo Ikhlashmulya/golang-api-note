@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ikhlashmulya/noteapp-resful-api/entity"
+	"github.com/ikhlashmulya/golang-api-note/entity"
 )
 
 //model for request and response in service
