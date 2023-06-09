@@ -64,7 +64,7 @@ Response :
 
 ```json
 {
-  "code": 0,
+  "code": "number",
   "status": "string",
   "message": "string",
   "data": [
@@ -96,7 +96,7 @@ Response :
 
 ```json
 {
-  "code": 0,
+  "code": "number",
   "status": "string",
   "message": "string",
   "data": {
