@@ -152,7 +152,7 @@ Response :
 }
 ```
 
-## Delete Mahasiswa
+## Delete Note
 
 Request :
 
