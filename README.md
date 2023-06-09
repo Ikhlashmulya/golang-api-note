@@ -21,6 +21,9 @@ Request :
 
 - Method : POST
 - Endpoint : `api/notes`
+- Header : 
+  - x-api-key : secret
+  - content-type : application/json
 - Body :
 
 ```json
@@ -53,6 +56,9 @@ Request :
 
 - Method : GET
 - Endpoint : `api/notes`
+- Header : 
+  - x-api-key : secret
+  - content-type : application/json
 
 Response :
 
@@ -82,6 +88,9 @@ Request :
 
 - Method : GET
 - Endpoint : `api/notes/{noteId}`
+- Header : 
+  - x-api-key : secret
+  - content-type : application/json
 
 Response :
 
@@ -109,6 +118,9 @@ Request :
 
 - Method : PUT
 - Endpoint : `api/notes/{noteId}`
+- Header : 
+  - x-api-key : secret
+  - content-type : application/json
 - Body :
 
 ```json
@@ -146,6 +158,9 @@ Request :
 
 - Method : DELETE
 - Endpoint : `api/notes/{noteId}`
+- Header : 
+  - x-api-key : secret
+  - content-type : application/json
 
 Response :
 
