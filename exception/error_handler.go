@@ -19,6 +19,14 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 		})
 	}
 
+	if err.Error() == "Method Not Allowed" {
+		return ctx.Status(405).JSON(model.WebResponse{
+			Code:    405,
+			Status:  "METHOD_NOT_ALLOWED",
+			Message: err.Error(),
+		})
+	}
+
 	_, ok := err.(validator.ValidationErrors)
 	if ok {
 		return ctx.Status(400).JSON(model.WebResponse{
