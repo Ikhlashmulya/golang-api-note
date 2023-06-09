@@ -107,7 +107,7 @@ Response :
 
 Request :
 
-- Method : PUT/PATCH
+- Method : PUT
 - Endpoint : `api/notes/{noteId}`
 - Body :
 
