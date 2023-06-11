@@ -58,7 +58,13 @@ func (repository *NoteRepositoryImpl) Delete(note entity.Note) {
 	defer cancel()
 
 	//delete data
-	err := repository.DB.WithContext(ctx).Where("id = ?", note.Id).Delete(&note).Error
+	err := repository.DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+		if err := tx.Where("id = ?", note.Id).Delete(&note).Error; err != nil {
+			return err
+		}
+
+		return nil
+	})
 	exception.PanicIfErr(err)
 }
 
