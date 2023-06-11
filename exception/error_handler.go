@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/keyauth"
 	"github.com/ikhlashmulya/golang-api-note/model"
 	"gorm.io/gorm"
 )
@@ -15,6 +16,14 @@ func ErrorHandler(ctx *fiber.Ctx, err error) error {
 		return ctx.Status(404).JSON(model.WebResponse{
 			Code:    404,
 			Status:  "NOT_FOUND",
+			Message: err.Error(),
+		})
+	}
+
+	if errors.Is(err, keyauth.ErrMissingOrMalformedAPIKey) {
+		return ctx.Status(401).JSON(model.WebResponse{
+			Code:    401,
+			Status:  "UNAUTHORIZED",
 			Message: err.Error(),
 		})
 	}

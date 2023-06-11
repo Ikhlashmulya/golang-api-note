@@ -5,7 +5,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/ikhlashmulya/golang-api-note/config"
 	"github.com/ikhlashmulya/golang-api-note/controller"
-	"github.com/ikhlashmulya/golang-api-note/middleware"
 	"github.com/ikhlashmulya/golang-api-note/repository"
 	"github.com/ikhlashmulya/golang-api-note/service"
 
@@ -34,7 +33,7 @@ func main() {
 	//setup fiber
 	app := fiber.New(config.NewFiberConfig())
 	app.Use(recover.New())
-	app.Use(middleware.AuthMiddleware())
+	app.Use(config.NewFiberKeyAuthConfig())
 
 	//setup route
 	noteController.Route(app)
