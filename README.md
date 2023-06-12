@@ -2,11 +2,12 @@
 An example Golang RESTful API project
 
 ## Frameworks
-- web framework : Go-fiber
+- Web framework : Gofiber
 - ORM : Gorm
 - Database : MySQL
 - Validation : Go playground validator
-- config : GoDotEnv
+- Config : GoDotEnv
+- Testing : Testify
 
 ## Architecture
 Controller -> Service -> Repository
