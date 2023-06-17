@@ -2,6 +2,7 @@ package test
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"io"
 	"net/http/httptest"
@@ -62,7 +63,7 @@ func TestCreateSuccess(t *testing.T) {
 	webResponseData := webResponse.Data.(map[string]any)
 	assert.NotNil(t, webResponseData["id"])
 
-	noteRepository.Delete(entity.Note{Id: webResponseData["id"].(string)})
+	noteRepository.Delete(context.TODO(), entity.Note{Id: webResponseData["id"].(string)})
 }
 
 func TestCreateBadRequest(t *testing.T) {
@@ -89,7 +90,7 @@ func TestCreateBadRequest(t *testing.T) {
 
 func TestUpdateSuccess(t *testing.T) {
 	id := uuid.New().String()
-	noteRepository.Create(entity.Note{
+	noteRepository.Create(context.TODO(), entity.Note{
 		Id:    id,
 		Title: "Test Create Data",
 		Tags:  "tags1,tags2",
@@ -126,12 +127,12 @@ func TestUpdateSuccess(t *testing.T) {
 		assert.Equal(t, updateNoteRequest.Tags[i], webResponseData["tags"].([]interface{})[i].(string))
 	}
 
-	noteRepository.Delete(entity.Note{Id: id})
+	noteRepository.Delete(context.TODO(), entity.Note{Id: id})
 }
 
 func TestUpdateBadRequest(t *testing.T) {
 	id := uuid.New().String()
-	noteRepository.Create(entity.Note{
+	noteRepository.Create(context.TODO(), entity.Note{
 		Id:    id,
 		Title: "Test Create Data",
 		Tags:  "tags1,tags2",
@@ -159,12 +160,12 @@ func TestUpdateBadRequest(t *testing.T) {
 	assert.Equal(t, 400, webResponse.Code)
 	assert.Equal(t, "BAD_REQUEST", webResponse.Status)
 
-	noteRepository.Delete(entity.Note{Id: id})
+	noteRepository.Delete(context.TODO(), entity.Note{Id: id})
 }
 
 func TestDeleteSuccess(t *testing.T) {
 	id := uuid.New().String()
-	noteRepository.Create(entity.Note{
+	noteRepository.Create(context.TODO(), entity.Note{
 		Id:    id,
 		Title: "Test Create Data",
 		Tags:  "tags1,tags2",
@@ -209,7 +210,7 @@ func TestFindById(t *testing.T) {
 		Tags:  "tags1,tags2",
 		Body:  "ini adalah test",
 	}
-	noteRepository.Create(note)
+	noteRepository.Create(context.TODO(), note)
 
 	request := httptest.NewRequest("GET", "/api/notes/"+id, nil)
 	request.Header.Set("x-api-key", "secret")
@@ -234,7 +235,7 @@ func TestFindById(t *testing.T) {
 		assert.Equal(t, noteTags[i], webResponseData["tags"].([]interface{})[i].(string))
 	}
 
-	noteRepository.Delete(entity.Note{Id: id})
+	noteRepository.Delete(context.TODO(), entity.Note{Id: id})
 }
 
 func TestFindByIdNotFound(t *testing.T) {
@@ -262,7 +263,7 @@ func TestFindAll(t *testing.T) {
 		Tags:  "tags1,tags2",
 		Body:  "ini adalah test",
 	}
-	noteRepository.Create(note1)
+	noteRepository.Create(context.TODO(), note1)
 	id2 := uuid.New().String()
 	note2 := entity.Note{
 		Id:    id2,
@@ -270,7 +271,7 @@ func TestFindAll(t *testing.T) {
 		Tags:  "tags1,tags2",
 		Body:  "ini adalah test",
 	}
-	noteRepository.Create(note2)
+	noteRepository.Create(context.TODO(), note2)
 
 	request := httptest.NewRequest("GET", "/api/notes", nil)
 	request.Header.Set("x-api-key", "secret")
@@ -305,8 +306,8 @@ func TestFindAll(t *testing.T) {
 		assert.Equal(t, noteTags2[i], webResponseData2["tags"].([]any)[i].(string))
 	}
 
-	noteRepository.Delete(entity.Note{Id: id1})
-	noteRepository.Delete(entity.Note{Id: id2})
+	noteRepository.Delete(context.TODO(), entity.Note{Id: id1})
+	noteRepository.Delete(context.TODO(), entity.Note{Id: id2})
 }
 
 func TestUnauthorized(t *testing.T) {

@@ -1,7 +1,6 @@
 package config
 
 import (
-	"context"
 	"fmt"
 	"time"
 
@@ -39,10 +38,4 @@ func NewGormDB(configuration Config) *gorm.DB {
 	db.AutoMigrate(&entity.Note{})
 
 	return db
-}
-
-// context
-func NewGormDBContext() (context.Context, context.CancelFunc) {
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
-	return ctx, cancel
 }

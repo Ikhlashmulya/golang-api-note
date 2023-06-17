@@ -31,7 +31,7 @@ func (controller *NoteController) Create(ctx *fiber.Ctx) error {
 	exception.PanicIfErr(err)
 
 	// send data to service and get response
-	response := controller.noteService.Create(createNoteRequest)
+	response := controller.noteService.Create(ctx.Context(), createNoteRequest)
 
 	//response body
 	return ctx.Status(201).JSON(model.WebResponse{
@@ -52,7 +52,7 @@ func (controller *NoteController) Update(ctx *fiber.Ctx) error {
 	updateNoteRequest.Id = ctx.Params("noteId")
 
 	// send data to service and get response
-	response := controller.noteService.Update(updateNoteRequest)
+	response := controller.noteService.Update(ctx.Context(), updateNoteRequest)
 
 	//response body
 	return ctx.JSON(model.WebResponse{
@@ -68,7 +68,7 @@ func (controller *NoteController) Delete(ctx *fiber.Ctx) error {
 	noteId := ctx.Params("noteId")
 
 	// send data to service
-	controller.noteService.Delete(noteId)
+	controller.noteService.Delete(ctx.Context(), noteId)
 
 	//response body
 	return ctx.JSON(model.WebResponse{
@@ -83,7 +83,7 @@ func (controller *NoteController) FindById(ctx *fiber.Ctx) error {
 	noteId := ctx.Params("noteId")
 
 	//find data
-	response := controller.noteService.FindById(noteId)
+	response := controller.noteService.FindById(ctx.Context(), noteId)
 
 	//response body
 	return ctx.JSON(model.WebResponse{
@@ -96,7 +96,7 @@ func (controller *NoteController) FindById(ctx *fiber.Ctx) error {
 
 func (controller *NoteController) FindAll(ctx *fiber.Ctx) error {
 	//get all data
-	response := controller.noteService.FindAll()
+	response := controller.noteService.FindAll(ctx.Context())
 
 	//response body
 	return ctx.JSON(model.WebResponse{
