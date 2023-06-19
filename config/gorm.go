@@ -35,7 +35,7 @@ func NewGormDB(configuration Config) *gorm.DB {
 	sqlDB.SetMaxOpenConns(100)
 
 	//migration table
-	db.AutoMigrate(&entity.Note{})
+	db.AutoMigrate(&entity.Note{}, &entity.User{})
 
 	return db
 }
