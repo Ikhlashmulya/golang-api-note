@@ -21,7 +21,7 @@ func NewUserService(userRepository repository.UserRespository, signingKey []byte
 	return &UserServiceImpl{UserRespository: userRepository, SigningKey: signingKey}
 }
 
-func (service *UserServiceImpl) Login(ctx context.Context, input model.LoginInput) string {
+func (service *UserServiceImpl) Login(ctx context.Context, input model.LoginInput) (response model.LoginResponse) {
 	//get user
 	user, err := service.UserRespository.GetUser(ctx, input.Username)
 	exception.PanicIfErr(err)
@@ -42,7 +42,8 @@ func (service *UserServiceImpl) Login(ctx context.Context, input model.LoginInpu
 	signedToken, err := token.SignedString(service.SigningKey)
 	exception.PanicIfErr(err)
 
-	return signedToken
+	response.Token = signedToken
+	return response
 }
 
 func (service *UserServiceImpl) Register(ctx context.Context, request model.RegisterRequest) model.RegisterResponse {

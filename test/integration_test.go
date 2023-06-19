@@ -67,7 +67,6 @@ func TestCreateNote(t *testing.T) {
 			Password: "test",
 		}
 		loginInput, _ := json.Marshal(data)
-		// loginInput := strings.NewReader(`{"username:"test", "password":"test"}`)
 		request := httptest.NewRequest(fiber.MethodPost, "/api/auth/login", bytes.NewBuffer(loginInput))
 		request.Header.Add("content-type", "application/json")
 
@@ -141,7 +140,6 @@ func TestUpdateNote(t *testing.T) {
 			Password: "test",
 		}
 		loginInput, _ := json.Marshal(data)
-		// loginInput := strings.NewReader(`{"username:"test", "password":"test"}`)
 		request := httptest.NewRequest(fiber.MethodPost, "/api/auth/login", bytes.NewBuffer(loginInput))
 		request.Header.Add("content-type", "application/json")
 
@@ -240,7 +238,6 @@ func TestDeleteNote(t *testing.T) {
 			Password: "test",
 		}
 		loginInput, _ := json.Marshal(data)
-		// loginInput := strings.NewReader(`{"username:"test", "password":"test"}`)
 		request := httptest.NewRequest(fiber.MethodPost, "/api/auth/login", bytes.NewBuffer(loginInput))
 		request.Header.Add("content-type", "application/json")
 
@@ -303,7 +300,6 @@ func TestFindByIdNote(t *testing.T) {
 			Password: "test",
 		}
 		loginInput, _ := json.Marshal(data)
-		// loginInput := strings.NewReader(`{"username:"test", "password":"test"}`)
 		request := httptest.NewRequest(fiber.MethodPost, "/api/auth/login", bytes.NewBuffer(loginInput))
 		request.Header.Add("content-type", "application/json")
 
@@ -474,7 +470,6 @@ func TestMethodNotAllowed(t *testing.T) {
 			Password: "test",
 		}
 		loginInput, _ := json.Marshal(data)
-		// loginInput := strings.NewReader(`{"username:"test", "password":"test"}`)
 		request := httptest.NewRequest(fiber.MethodPost, "/api/auth/login", bytes.NewBuffer(loginInput))
 		request.Header.Add("content-type", "application/json")
 

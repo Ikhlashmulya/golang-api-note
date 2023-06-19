@@ -40,7 +40,6 @@ func main() {
 	//setup fiber
 	app := fiber.New(config.NewFiberConfig())
 	app.Use(recover.New())
-	// app.Use(config.NewFiberKeyAuthConfig())
 
 	//setup route
 	noteController.Route(app)

@@ -22,27 +22,29 @@ func (controller *UserController) Route(app *fiber.App) {
 }
 
 func (controller *UserController) Login(ctx *fiber.Ctx) error {
+	//read request body
 	var loginInput model.LoginInput
 	err := ctx.BodyParser(&loginInput)
 	exception.PanicIfErr(err)
 
-	token := controller.UserService.Login(ctx.Context(), loginInput)
+	//send request body to service
+	response := controller.UserService.Login(ctx.Context(), loginInput)
 
 	return ctx.JSON(model.WebResponse{
 		Code:    fiber.StatusOK,
 		Status:  "OK",
 		Message: "success login",
-		Data: model.LoginResponse{
-			Token: token,
-		},
+		Data:    response,
 	})
 }
 
 func (controller *UserController) Register(ctx *fiber.Ctx) error {
+	//read request body
 	var registerRequest model.RegisterRequest
 	err := ctx.BodyParser(&registerRequest)
 	exception.PanicIfErr(err)
 
+	//read request body
 	response := controller.UserService.Register(ctx.Context(), registerRequest)
 
 	return ctx.JSON(model.WebResponse{
