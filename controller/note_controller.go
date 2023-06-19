@@ -3,6 +3,7 @@ package controller
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/ikhlashmulya/golang-api-note/exception"
+	"github.com/ikhlashmulya/golang-api-note/middleware"
 	"github.com/ikhlashmulya/golang-api-note/model"
 	"github.com/ikhlashmulya/golang-api-note/service"
 )
@@ -17,11 +18,12 @@ func NewNoteController(service service.NoteService) *NoteController {
 }
 
 func (controller *NoteController) Route(app *fiber.App) {
-	app.Post("/api/notes", controller.Create)
-	app.Get("/api/notes", controller.FindAll)
-	app.Get("/api/notes/:noteId", controller.FindById)
-	app.Put("/api/notes/:noteId", controller.Update)
-	app.Delete("/api/notes/:noteId", controller.Delete)
+	note := app.Group("/api/notes", middleware.Protected())
+	note.Post("/", controller.Create)
+	note.Get("/", controller.FindAll)
+	note.Get("/:noteId", controller.FindById)
+	note.Put("/:noteId", controller.Update)
+	note.Delete("/:noteId", controller.Delete)
 }
 
 func (controller *NoteController) Create(ctx *fiber.Ctx) error {
@@ -34,8 +36,8 @@ func (controller *NoteController) Create(ctx *fiber.Ctx) error {
 	response := controller.noteService.Create(ctx.Context(), createNoteRequest)
 
 	//response body
-	return ctx.Status(201).JSON(model.WebResponse{
-		Code:    201,
+	return ctx.Status(fiber.StatusCreated).JSON(model.WebResponse{
+		Code:    fiber.StatusCreated,
 		Status:  "CREATED",
 		Message: "success create new note",
 		Data:    response,
@@ -56,7 +58,7 @@ func (controller *NoteController) Update(ctx *fiber.Ctx) error {
 
 	//response body
 	return ctx.JSON(model.WebResponse{
-		Code:    200,
+		Code:    fiber.StatusOK,
 		Status:  "OK",
 		Message: "success updated note",
 		Data:    response,
@@ -72,7 +74,7 @@ func (controller *NoteController) Delete(ctx *fiber.Ctx) error {
 
 	//response body
 	return ctx.JSON(model.WebResponse{
-		Code:    200,
+		Code:    fiber.StatusOK,
 		Status:  "OK",
 		Message: "success deleted note",
 	})
@@ -87,7 +89,7 @@ func (controller *NoteController) FindById(ctx *fiber.Ctx) error {
 
 	//response body
 	return ctx.JSON(model.WebResponse{
-		Code:    200,
+		Code:    fiber.StatusOK,
 		Status:  "OK",
 		Message: "success get note",
 		Data:    response,
@@ -100,7 +102,7 @@ func (controller *NoteController) FindAll(ctx *fiber.Ctx) error {
 
 	//response body
 	return ctx.JSON(model.WebResponse{
-		Code:    200,
+		Code:    fiber.StatusOK,
 		Status:  "OK",
 		Message: "success get all note",
 		Data:    response,

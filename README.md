@@ -16,6 +16,56 @@ reference : [https://github.com/khannedy/golang-clean-architecture](https://gith
 
 ## API Spec
 
+### Login
+Request :
+- Method : POST
+- Endpoint : `/api/auth/login`
+- Body : 
+```json
+{
+    "username": "string",
+    "password":"string"
+}
+```
+
+Response : 
+```json
+{
+  "code": "number",
+  "status": "string",
+  "message": "string",
+  "data": {
+    "token": "string"
+  }
+}
+```
+
+### Register :
+request :
+- Method : POST
+- Endpoint : `/api/auth/register`
+- Body : 
+```json
+{
+    "name": "string",
+    "username": "string",
+    "password":"string"
+}
+```
+
+Response : 
+```json
+{
+  "code": "number",
+  "status": "string",
+  "message": "string",
+  "data": {
+    "name": "string",
+    "username": "string"
+  }
+}
+```
+
 ### Create Note
 
 Request :
@@ -23,7 +73,7 @@ Request :
 - Method : POST
 - Endpoint : `api/notes`
 - Header : 
-  - x-api-key : secret
+  - Authorization : token
   - content-type : application/json
 - Body :
 
@@ -58,7 +108,7 @@ Request :
 - Method : GET
 - Endpoint : `api/notes`
 - Header : 
-  - x-api-key : secret
+  - Authorization : token
   - content-type : application/json
 
 Response :
@@ -90,7 +140,7 @@ Request :
 - Method : GET
 - Endpoint : `api/notes/{noteId}`
 - Header : 
-  - x-api-key : secret
+  - Authorization : token
   - content-type : application/json
 
 Response :
@@ -120,7 +170,7 @@ Request :
 - Method : PUT
 - Endpoint : `api/notes/{noteId}`
 - Header : 
-  - x-api-key : secret
+  - Authorization : token
   - content-type : application/json
 - Body :
 
@@ -160,7 +210,7 @@ Request :
 - Method : DELETE
 - Endpoint : `api/notes/{noteId}`
 - Header : 
-  - x-api-key : secret
+  - Authorization : token
   - content-type : application/json
 
 Response :

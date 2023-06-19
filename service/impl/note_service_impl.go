@@ -11,6 +11,7 @@ import (
 	"github.com/ikhlashmulya/golang-api-note/exception"
 	"github.com/ikhlashmulya/golang-api-note/model"
 	"github.com/ikhlashmulya/golang-api-note/repository"
+	"github.com/ikhlashmulya/golang-api-note/service"
 )
 
 // note service implementation
@@ -19,7 +20,7 @@ type NoteServiceImpl struct {
 	validate       *validator.Validate
 }
 
-func NewNoteService(repository repository.NoteRepository, validate *validator.Validate) NoteService {
+func NewNoteService(repository repository.NoteRepository, validate *validator.Validate) service.NoteService {
 	return &NoteServiceImpl{repository, validate}
 }
 

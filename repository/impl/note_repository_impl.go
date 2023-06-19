@@ -13,7 +13,7 @@ type NoteRepositoryImpl struct {
 	DB *gorm.DB
 }
 
-func NewNoteRepository(db *gorm.DB) NoteRepository {
+func NewNoteRepository(db *gorm.DB) *NoteRepositoryImpl {
 	return &NoteRepositoryImpl{DB: db}
 }
 
